@@ -11,7 +11,7 @@ describe("Criando usuário", () => {
     createUserUseCase = new CreateUserUseCase(usersRepository);
   });
 
-  it("Deve ser possível criar uma novo usuário.", async () => {
+  it("Deve ser possível criar um novo usuário.", async () => {
     const user = await createUserUseCase.execute({
       name: "User Test",
       email: "test@email.com",

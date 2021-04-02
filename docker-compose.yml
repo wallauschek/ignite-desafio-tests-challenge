@@ -1,7 +1,7 @@
 version: "3.7"
 
 services:
-  database_ignite_desafio_tests:
+  database:
     image: postgres
     container_name: database_ignite_desafio_tests
     restart: always
@@ -13,7 +13,6 @@ services:
       - POSTGRES_DB=fin_api
     volumes:
       - pgdata:/data/postgres
-    network_mode: host
 
   app:
     build: .
@@ -23,7 +22,10 @@ services:
       - 9229:9229
     volumes:
       - .:/usr/app
-    network_mode: host
+    links:
+      - database
+    depends_on:
+      - database
 
 volumes:
   pgdata:
